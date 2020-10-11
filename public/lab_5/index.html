@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>lab 4</title>
+    <title>George Alatzas lab 4</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
     <div class="wrapper">
         <div class="container">
             <div class="header">
-                <h1>Lab 4</h1>
+                <h1>George Alatzas Lab 4</h1>
             </div>
             <form action="/api" method="post">
                 <ul class="flex-outer">
@@ -21,7 +21,7 @@
                     <li><label for="phone">Phone</label>
                         <input type="tel" name="phone" id="phone"></li>
                     <li><label for="message">Text field</label>
-                        <textarea name="message" id="message" cols="33" rows="10">This is some default message text.</textarea></li>
+                        <textarea name="message" id="message" cols="33" rows="10"></textarea></li>
                     <li>
                         <p>
                             Age
@@ -37,10 +37,26 @@
                     </li>
                     <li>
                         <button class="button" id="submit_button" name="submit_button" type="submit">Submit form</button>
+                        <button onclick="testFunction()" class="button" id="activate_button" name="activate_button" type="submit">Activate</button>
                     </li>
                 </ul>
             </form>
         </div>
     </div>
+     <script>
+         function testFunction() {
+         fetch('/api')
+        .then((response) => response.text())
+        .then((response) => {
+            const fruits = ['orange', 'apple', 'plum'];
+            const checks = document.querySelectorAll('.flex-inner label')
+            console.log(checks.length, checks[0]);
+                checks.forEach(((check,i) => {
+                    console.log(check, i);
+                    check.innerText = fruits[i];
+                }))
+            })
+        }
+     </script>
 </body>
 </html>
