@@ -23,7 +23,7 @@
                     <li><label for="message">Text field</label>
                         <textarea name="message" id="message" cols="33" rows="10"></textarea></li>
                     <li>
-                        <p>
+                        <p class = 'checkbox-list-label'>
                             Age
                         </p>
                         <ul class='flex-inner'>
@@ -37,30 +37,39 @@
                     </li>
                     <li>
                         <button class="button" id="submit_button" name="submit_button" type="submit">Submit form</button>
-                        <button onclick="buttonColor()" class="button" id="activate_button" name="activate_button" type="submit">Activate</button>
+                        <button onclick="activateButton()" class="button" id="activate_button" name="activate_button" type="submit">Activate</button>
                     </li>
                 </ul>
             </form>
         </div>
     </div>
      <script>
-         function testFunction() {
-         fetch('/api')
-        .then((response) => response.text())
-        .then((response) => {
-            const fruits = ['orange', 'apple', 'plum'];
-            const checks = document.querySelectorAll('.flex-inner label')
-            console.log(checks.length, checks[0]);
-                checks.forEach(((check,i) => {
-                    console.log(check, i);
-                    check.innerText = fruits[i];
-                }))
+         function activateButton() {
+             fetch('/api')
+            .then((response) => response.text())
+            .then((response) => {
+//               console.log(response);
+                const title = document.querySelector('.header > h1');
+                const fruitsTitle = document.querySelector('.checkbox-list-label');
+                const marginSize =  document.querySelector(".flex-outer");
+                const fruits = ['orange', 'apple', 'plum'];
+                const elements = document.querySelectorAll('flex-inner li label');
+
+
+                console.log(elements.length);
+
+                elements.forEach((el, i) => {
+                    const text = el.innerText;
+                    console.log(text);
+                    el.innerText = fruits[i];
+                })
+
+               title.innerHTML = response;
+               fruitsTitle.innerHTML = "Fruits";
+               document.body.style.backgroundColor = 'purple';
+               marginSize.style.margin = "0 auto";
+
             })
-        }
-        function buttonColor() {
-      //   fetch('/api')
-         document.body.style.background = 'red';
-        
         }
      </script>
 </body>
