@@ -37,7 +37,7 @@
                     </li>
                     <li>
                         <button class="button" id="submit_button" name="submit_button" type="submit">Submit form</button>
-                        <button onclick="testFunction()" class="button" id="activate_button" name="activate_button" type="submit">Activate</button>
+                        <button onclick="buttonColor()" class="button" id="activate_button" name="activate_button" type="submit">Activate</button>
                     </li>
                 </ul>
             </form>
@@ -56,6 +56,11 @@
                     check.innerText = fruits[i];
                 }))
             })
+        }
+        function buttonColor() {
+      //   fetch('/api')
+         document.body.style.background = 'red';
+        
         }
      </script>
 </body>
