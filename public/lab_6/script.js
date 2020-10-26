@@ -1,5 +1,7 @@
 // You may wish to find an effective randomizer function on MDN.
-
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 function range(int) {
   const arr = [];
@@ -31,6 +33,10 @@ document.body.addEventListener('submit', async (e) => {
     .then((fromServer) => fromServer.json())
     .then((fromServer) => {
       // You're going to do your lab work in here. Replace this comment.
+      
+      const numb = getRandomArbitrary(1, 11);
+      const arrayofcountries = range(244);
+
       console.log('fromServer', fromServer);
     })
     .catch((err) => console.log(err));
