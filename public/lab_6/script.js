@@ -1,8 +1,9 @@
 // You may wish to find an effective randomizer function on MDN.
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
-
 function range(int) {
   const arr = [];
   for (let i = 0; i < int; i += 1) {
@@ -33,9 +34,10 @@ document.body.addEventListener('submit', async (e) => {
     .then((fromServer) => fromServer.json())
     .then((fromServer) => {
       // You're going to do your lab work in here. Replace this comment.
-      
-      const numb = getRandomArbitrary(1, 11);
-      const arrayofcountries = range(244);
+
+      const countriesEmpty = range(10);
+      const countries = countres.map(x => getRandomInt(0, 244));
+      // const reverseList = newArr2.sort((a,b) => sortFunction(b, a, 'name'));
 
       console.log('fromServer', fromServer);
     })
